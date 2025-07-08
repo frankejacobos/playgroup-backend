@@ -14,35 +14,88 @@ export type Database = {
   }
   public: {
     Tables: {
-      product: {
+      category: {
         Row: {
+          color: string | null
           created_at: string
-          description: string
+          description: string | null
+          icon: string | null
           id: number
-          img: string | null
           name: string
           updated_at: string
           uuid: string
         }
         Insert: {
+          color?: string | null
           created_at?: string
-          description: string
+          description?: string | null
+          icon?: string | null
           id?: number
-          img?: string | null
           name: string
           updated_at?: string
           uuid?: string
         }
         Update: {
+          color?: string | null
           created_at?: string
-          description?: string
+          description?: string | null
+          icon?: string | null
           id?: number
-          img?: string | null
           name?: string
           updated_at?: string
           uuid?: string
         }
         Relationships: []
+      }
+      product: {
+        Row: {
+          brand: string | null
+          category_id: number
+          created_at: string
+          description: string
+          id: number
+          img: string | null
+          name: string
+          price: number
+          stock: number
+          updated_at: string
+          uuid: string
+        }
+        Insert: {
+          brand?: string | null
+          category_id: number
+          created_at?: string
+          description: string
+          id?: number
+          img?: string | null
+          name: string
+          price?: number
+          stock?: number
+          updated_at?: string
+          uuid?: string
+        }
+        Update: {
+          brand?: string | null
+          category_id?: number
+          created_at?: string
+          description?: string
+          id?: number
+          img?: string | null
+          name?: string
+          price?: number
+          stock?: number
+          updated_at?: string
+          uuid?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "product_category_id_fkey"
+            columns: ["category_id"]
+            isOneToOne: false
+            referencedRelation: "category"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {

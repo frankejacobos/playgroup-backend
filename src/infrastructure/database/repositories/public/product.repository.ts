@@ -11,7 +11,9 @@ export class ProductRepository {
   async getAll(filter: IFilter): Promise<Partial<IProduct>[]> {
     const { data, error } = await this.db
       .from("product")
-      .select("name, description, img, uuid")
+      .select(
+        "uuid, name, description, img, stock, price, brand, category(name)"
+      )
       .match(filter);
 
     if (error) throw error;
@@ -22,7 +24,9 @@ export class ProductRepository {
   async getByUUID(uuid: string): Promise<Partial<IProduct>> {
     const { data, error } = await this.db
       .from("product")
-      .select("name, description, img, uuid")
+      .select(
+        "uuid, name, description, img, stock, price, brand, category(name)"
+      )
       .eq("uuid", uuid)
       .single();
 
@@ -35,7 +39,9 @@ export class ProductRepository {
     const { data, error } = await this.db
       .from("product")
       .insert(product)
-      .select("name, description, img, uuid")
+      .select(
+        "uuid, name, description, img, stock, price, brand, category(name)"
+      )
       .single();
 
     if (error) throw error;
@@ -48,7 +54,9 @@ export class ProductRepository {
       .from("product")
       .update(product)
       .eq("uuid", uuid)
-      .select("name, description, img, uuid")
+      .select(
+        "uuid, name, description, img, stock, price, brand, category(name)"
+      )
       .single();
 
     if (error) throw error;
@@ -61,7 +69,7 @@ export class ProductRepository {
       .from("product")
       .delete()
       .eq("uuid", uuid)
-      .select("name, description, img, uuid")
+      .select("uuid, name, description, img, stock, price, brand")
       .single();
 
     if (error) throw error;

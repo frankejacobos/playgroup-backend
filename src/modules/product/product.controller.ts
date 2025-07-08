@@ -8,7 +8,7 @@ import { ProductService } from "./product.service";
 export class ProductController {
   service: ProductService;
 
-  constructor(db: SupabaseClient<Database>) {
+  constructor(private readonly db: SupabaseClient<Database>) {
     this.service = new ProductService(new ProductRepository(db));
   }
 

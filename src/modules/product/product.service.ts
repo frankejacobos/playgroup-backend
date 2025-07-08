@@ -7,7 +7,7 @@ type IFilter = Partial<IProduct>;
 export class ProductService {
   constructor(private readonly repoProduct: ProductRepository) {}
 
-  async getAllProducts(filter: IFilter): Promise<Partial<IProduct>[]> {
+  getAllProducts(filter: IFilter): Promise<Partial<IProduct>[]> {
     return this.repoProduct.getAll(filter);
   }
 
