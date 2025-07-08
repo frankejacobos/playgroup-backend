@@ -25,7 +25,7 @@ export class ProductRepository {
     const { data, error } = await this.db
       .from("product")
       .select(
-        "uuid, name, description, img, stock, price, brand, category_id, category(name)"
+        "uuid, name, description, img, stock, price, brand, category(name)"
       )
       .eq("uuid", uuid)
       .single();
@@ -40,7 +40,7 @@ export class ProductRepository {
       .from("product")
       .insert(product)
       .select(
-        "uuid, name, description, img, stock, price, brand, category(name)"
+        "uuid, name, description, img, stock, price, brand, category_id, category(name)"
       )
       .single();
 
