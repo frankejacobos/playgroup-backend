@@ -12,7 +12,7 @@ export class ProductRepository {
     const { data, error } = await this.db
       .from("product")
       .select(
-        "uuid, name, description, img, stock, price, brand, category(name)"
+        "uuid, name, description, img, stock, price, brand, category_id, category(name)"
       )
       .match(filter);
 
