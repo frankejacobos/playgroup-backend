@@ -16,6 +16,9 @@ app.use(requestLoggerMiddleware);
 
 app.use("/categories", CategoryModule);
 app.use("/products", ProductModule);
+app.get("/", (_req, res) => {
+  res.json({ message: "Bienvenido al backend playgroup 🎉" });
+});
 
 app.use(logErrorsMiddleware);
 
