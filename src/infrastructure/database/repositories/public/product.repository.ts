@@ -55,7 +55,7 @@ export class ProductRepository {
       .update(product)
       .eq("uuid", uuid)
       .select(
-        "uuid, name, description, img, stock, price, brand, category(name)"
+        "uuid, name, description, img, stock, price, brand, category_id, category(name)"
       )
       .single();
 
